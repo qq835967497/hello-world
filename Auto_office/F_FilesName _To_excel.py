@@ -50,6 +50,8 @@ def write_to_excel(workbook_path, sheet_name, file_path_list, parent_path_list):
     workbook.save(workbook_path)
 
 
+
+
 ## 模块三：主要程序逻辑
 def main():
     dir_path = 'D:/software'  # 文件夹路径
