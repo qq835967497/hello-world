@@ -5,6 +5,8 @@ from openpyxl import load_workbook
 
 
 
+
+
 #1.表格
 wb = Workbook()#创建一个表格
 wb = load_workbook('excel.xlsx')#加载一个表格
