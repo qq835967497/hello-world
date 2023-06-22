@@ -1,0 +1,322 @@
+#-------------------------------------------------------------------------------
+# Name:        module1
+# Purpose:
+#
+# Author:      kanli
+#
+# Created:     24/05/2023
+# Copyright:   (c) kanli 2023
+# Licence:     <your licence>
+#-------------------------------------------------------------------------------
+
+
+import xlrd
+from docx import Document
+
+
+my_list = []
+
+vra1  = ''
+vra2  = ''
+
+count = 0
+
+
+worksheet = xlrd.open_workbook('D:\PXtwo.xls')
+sheet_names= worksheet.sheet_names()
+print(sheet_names)
+# 创建一个新的文档
+document = Document()
+for sheet_name in sheet_names:
+    sheet = worksheet.sheet_by_name(sheet_name)
+    rows = sheet.nrows # 获取行数
+    cols = sheet.ncols # 获取列数
+##    rows_number = len(rows)
+##    all_content = []
+    cols = sheet.col_values(0) # 数据格式为此数据的原有格式（原：字符串，读取：字符串；  原：浮点数， 读取：浮点数）
+    for i in cols:
+        count    = count+1
+        send     = str(i)
+        WaitTime = 500
+        send1 = send[0:2]
+        send2 = send[2:4]
+        send3 = send[4:6]
+        send4 = send[6:8]
+        send5 = send[8:10]
+        send6 = send[10:12]
+        send7 = send[12:14]
+        send8 = send[14:16]
+        send9 = send[16:18]
+
+        if   send  == "":
+            vra_out = 'Manual code\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n'
+            document.add_paragraph(vra_out)
+
+        elif send  != "":
+            if send3 == ".0":
+                vra = '  snprintf(StepContent, elcount(StepContent), "Step {}: Request 0x{} {} ") ;'.format(count,send1,send2)
+                document.add_paragraph(vra)
+
+                vra0 = '  request.byte(0)   =  0x02 ;'
+                document.add_paragraph(vra0)
+
+                vra1 = '  request.byte(1)   =  0x{} ;'.format(send1)
+                document.add_paragraph(vra1)
+
+                vra2 = '  request.byte(2)   =  0x{} ;'.format(send2)
+                document.add_paragraph(vra2)
+
+                for j in range(3,8):
+                    vraj = '  request.byte({})   =  0x00 ;'.format(j)
+                    document.add_paragraph(vraj)
+
+            elif send4 == ".0":
+                vra = '  snprintf(StepContent, elcount(StepContent), "Step {}: Request 0x{} {} {}") ;'.format(count,send1,send2,send3)
+                document.add_paragraph(vra)
+
+                vra0 = '  request.byte(0)   =  0x03 ;'
+                document.add_paragraph(vra0)
+
+                vra1 = '  request.byte(1)   =  0x{} ;'.format(send1)
+                document.add_paragraph(vra1)
+
+                vra2 = '  request.byte(2)   =  0x{} ;'.format(send2)
+                document.add_paragraph(vra2)
+
+                vra3 = '  request.byte(3)   =  0x{} ;'.format(send3)
+                document.add_paragraph(vra3)
+
+                for j in range(4,8):
+                    vraj = '  request.byte({})   =  0x00 ;'.format(j)
+                    document.add_paragraph(vraj)
+
+            elif send5 == ".0":
+                vra = '  snprintf(StepContent, elcount(StepContent), "Step {}: Request {} {} {} {}") ;'.format(count,send1,send2,send3,send4)
+                document.add_paragraph(vra)
+
+                vra0 = '  request.byte(0)   =  0x04 ;'
+                document.add_paragraph(vra0)
+
+                vra1 = '  request.byte(1)   =  0x{} ;'.format(send1)
+                document.add_paragraph(vra1)
+
+                vra2 = '  request.byte(2)   =  0x{} ;'.format(send2)
+                document.add_paragraph(vra2)
+
+                vra3 = '  request.byte(3)   =  0x{} ;'.format(send3)
+                document.add_paragraph(vra3)
+
+                vra4 = '  request.byte(4)   =  0x{} ;'.format(send4)
+                document.add_paragraph(vra4)
+
+                for j in range(5,8):
+                    vraj = '  request.byte({})   =  0x00 ;'.format(j)
+                    document.add_paragraph(vraj)
+
+            elif send6 == ".0":
+                vra = '  snprintf(StepContent, elcount(StepContent), "Step {}: Request {} {} {} {} {}") ;'.format(count,send1,send2,send3,send4,send5)
+                document.add_paragraph(vra1)
+
+                vra0 = '  request.byte(0)   =  0x05 ;'
+                document.add_paragraph(vra0)
+
+                vra1 = '  request.byte(1)   =  0x{} ;'.format(send1)
+                document.add_paragraph(vra1)
+
+                vra2 = '  request.byte(2)   =  0x{} ;'.format(send2)
+                document.add_paragraph(vra2)
+
+                vra3 = '  request.byte(3)   =  0x{} ;'.format(send3)
+                document.add_paragraph(vra3)
+
+                vra4 = '  request.byte(4)   =  0x{} ;'.format(send4)
+                document.add_paragraph(vra4)
+
+                vra5 = '  request.byte(5)   =  0x{} ;'.format(send5)
+                document.add_paragraph(vra5)
+
+                for j in range(6,8):
+                    vraj = '  request.byte({})   =  0x00 ;'.format(j)
+                    document.add_paragraph(vraj)
+
+            elif send7 == ".0":
+                vra = '  snprintf(StepContent, elcount(StepContent), "Step {}: Request {} {} {} {} {} {}") ;'.format(count,send1,send2,send3,send4,send5,send6)
+                document.add_paragraph(vra)
+
+                vra0 = '  request.byte(0)   =  0x05 ;'
+                document.add_paragraph(vra0)
+
+                vra1 = '  request.byte(1)   =  0x{} ;'.format(send1)
+                document.add_paragraph(vra1)
+
+                vra2 = '  request.byte(2)   =  0x{} ;'.format(send2)
+                document.add_paragraph(vra2)
+
+                vra3 = '  request.byte(3)   =  0x{} ;'.format(send3)
+                document.add_paragraph(vra3)
+
+                vra4 = '  request.byte(4)   =  0x{} ;'.format(send4)
+                document.add_paragraph(vra4)
+
+                vra5 = '  request.byte(5)   =  0x{} ;'.format(send5)
+                document.add_paragraph(vra5)
+
+                vra6 = '  request.byte(6)   =  0x{} ;'.format(send6)
+                document.add_paragraph(vra6)
+
+                for j in range(7,8):
+                    vraj = '  request.byte({})   =  0x00 ;'.format(j)
+                    document.add_paragraph(vraj)
+
+            elif send8 == ".0":
+                vra = '  snprintf(StepContent, elcount(StepContent), "Step {}: Request {} {} {} {} {} {} {}") ;'.format(count,send1,send2,send3,send4,send5,send6,send7)
+                document.add_paragraph(vra)
+
+                vra0 = '  request.byte(0)   =  0x05 ;'
+                document.add_paragraph(vra0)
+
+                vra1 = '  request.byte(1)   =  0x{} ;'.format(send1)
+                document.add_paragraph(vra1)
+
+                vra2 = '  request.byte(2)   =  0x{} ;'.format(send2)
+                document.add_paragraph(vra2)
+
+                vra3 = '  request.byte(3)   =  0x{} ;'.format(send3)
+                document.add_paragraph(vra3)
+
+                vra4 = '  request.byte(4)   =  0x{} ;'.format(send4)
+                document.add_paragraph(vra4)
+
+                vra5 = '  request.byte(5)   =  0x{} ;'.format(send5)
+                document.add_paragraph(vra5)
+
+                vra6 = '  request.byte(6)   =  0x{} ;'.format(send6)
+                document.add_paragraph(vra6)
+
+                vra7 = '  request.byte(7)   =  0x{} ;'.format(send7)
+                document.add_paragraph(vra7)
+
+                vra8 = '  request.byte(8)   =  0x00 ;'
+                document.add_paragraph(vra8)
+
+            elif send9 == ".0":
+                vra = '  snprintf(StepContent, elcount(StepContent), "Step {}: Request {} {} {} {} {} {} {} {}") ;'.format(count,send1,send2,send3,send4,send5,send6,send7,send8)
+                document.add_paragraph(vra1)
+
+                vra0 = '  request.byte(0)   =  0x05 ;'
+                document.add_paragraph(vra2)
+
+                vra1 = '  request.byte(1)   =  0x{} ;'.format(send1)
+                document.add_paragraph(vra2)
+
+                vra2 = '  request.byte(2)   =  0x{} ;'.format(send2)
+                document.add_paragraph(vra2)
+
+                vra3 = '  request.byte(3)   =  0x{} ;'.format(send3)
+                document.add_paragraph(vra2)
+
+                vra4 = '  request.byte(4)   =  0x{} ;'.format(send4)
+                document.add_paragraph(vra2)
+
+                vra5 = '  request.byte(5)   =  0x{} ;'.format(send5)
+                document.add_paragraph(vra2)
+
+                vra6 = '  request.byte(6)   =  0x{} ;'.format(send6)
+                document.add_paragraph(vra2)
+
+                vra7 = '  request.byte(7)   =  0x{} ;'.format(send7)
+                document.add_paragraph(vra2)
+
+                vra8 = '  request.byte(8)   =  0x{} ;'.format(send8)
+                document.add_paragraph(vra2)
+
+
+
+            vra_out = '  output(request);nowTime = timeNow();\n  nowTime = timeNow();\n  '
+            document.add_paragraph(vra_out)
+            vra_out = '  if(!CheckNoResponse()) {{\n  if(response.byte(1) -0x40 == 0x{}) {{\n    testStepPass(StepContent,"Positive Response");\n  }} else {{\n    testStepFail(StepContent,"Negative Response");\n  }}\n  }} \n \n \n \n  '.format(send1)
+            document.add_paragraph(vra_out)
+
+
+document.save('D:\example.docx')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##import openpyxl
+##from docx import Document
+
+### 打开Excel文件
+##wb = openpyxl.load_workbook('C:\Users\kanli\Downloads\PX20.xlsx')
+### 选择工作表
+##ws = wb.active
+##
+### 创建Word文档
+##doc = Document()
+##
+### 遍历Excel表格中的行
+##for row in ws.iter_rows():
+##    # 创建Word表格行
+##    table_row = doc.add_table(rows=1, cols=len(row))
+##    # 遍历Excel表格中的单元格
+##    for i, cell in enumerate(row):
+##        # 将单元格数据写入Word表格中
+##        table_row.cell(i, ).text = str(cell.value)
+##
+### 保存Word文档
+##doc.save('example.docx')
+
+##import xlrd
+##from docx import Document
+##
+##i=0
+##my_list = []
+##vra1 = ''
+##
+##worksheet = xlrd.open_workbook('D:\PXtwo.xls')
+##sheet_names= worksheet.sheet_names()
+##print(sheet_names)
+### 创建一个新的文档
+##document = Document()
+##for sheet_name in sheet_names:
+##    sheet = worksheet.sheet_by_name(sheet_name)
+##    rows = sheet.nrows # 获取行数
+##    cols = sheet.ncols # 获取列数
+##    all_content = []
+##    cols = sheet.col_values(0) # 数据格式为此数据的原有格式（原：字符串，读取：字符串；  原：浮点数， 读取：浮点数）
+##    for i in range(25):
+##        # 添加一个段落
+##        document.add_paragraph(cols[i])
+##        vra1 = "Peform VectorCAST unit testing for ",cols[i]
+####      cols[i] = vra1
+##        document.add_paragraph(vra1)
+##        document.add_paragraph("")
+##
+####    print(cols)
+##
+### 保存文档
+##document.save('D:\example.docx')
+##print(type(cols))
+
+
+
+
+
